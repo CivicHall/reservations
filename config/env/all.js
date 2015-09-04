@@ -7,8 +7,13 @@ module.exports = {
     keywords: 'cobot, visualization, reservations'
   },
   port: 3000,
-  api: {
-    host: 'localhost',
-    port: 8080
+  cobot: {
+    host: ('COBOT_HOST' in process.env?process.env['COBOT_HOST']:''),
+    client_id: ('COBOT_CLIENT_ID' in process.env?process.env['COBOT_CLIENT_ID']:''),
+    client_secret: ('COBOT_CLIENT_SECRET' in process.env?process.env['COBOT_CLIENT_SECRET']:''),
+    username: ('COBOT_USERNAME' in process.env?process.env['COBOT_USERNAME']:''),
+    password: ('COBOT_PASSWORD' in process.env?process.env['COBOT_PASSWORD']:'')
   }
 }
+
+process.env['MANDRILL_USERNAME']

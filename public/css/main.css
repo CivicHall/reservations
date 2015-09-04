@@ -2,3 +2,62 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: #eee;
 }
+
+#x-axis {
+  position: absolute;
+  width: 80%;
+  left: 20%;
+  height: 100%;
+  z-index: 2;
+}
+#timeline {
+  position: absolute;
+  width: 100%;
+  padding-top: 50px;
+  left: 0px;
+  z-index: 3;
+}
+
+.row {
+  height: 50px;
+}
+.label {
+  float: left;
+  width: 20%;
+}
+.timeline {
+  float: left;
+  width: 80%;
+}
+.reservation {
+  float: left;
+  position: relative;
+  height: 100%;
+  background: orange;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+.time {
+  display: inline-block;
+  height: 100%;
+  top: 0px;
+  background: red;
+  overflow: visible;
+}
+.time.even {
+  background: #eeffff;
+}
+.time.odd {
+  background: #ffeeee;
+}
+.time.last {
+  background: none;
+}
+.time-label {
+  margin-left: -50%;
+  text-align: center;
+  width:100%;
+  background: white;
+}

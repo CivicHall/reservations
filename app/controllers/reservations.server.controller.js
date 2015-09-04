@@ -5,10 +5,7 @@ var https = require('https'),
   config = require('../../config');
 
 
-var token = '';
 function authenticate(callback) {
-  if(token != '')
-    return callback(token);
 
   // Build an object that we want to send
   var authentication = {
@@ -37,6 +34,7 @@ function authenticate(callback) {
   // Set up the request
   var post_req = https.request(post_options, function(res) {
     res.setEncoding('utf8');
+    var token = '';
     res.on('data', function (chunk) {
       token = token + chunk;
     });
