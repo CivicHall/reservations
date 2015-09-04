@@ -6,6 +6,7 @@ var https = require('https'),
 
 
 function authenticate(callback) {
+  console.log(config);
 
   // Build an object that we want to send
   var authentication = {
