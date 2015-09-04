@@ -15,5 +15,3 @@ module.exports = {
     password: ('COBOT_PASSWORD' in process.env?process.env['COBOT_PASSWORD']:'')
   }
 }
-
-process.env['MANDRILL_USERNAME']
