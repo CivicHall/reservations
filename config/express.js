@@ -14,8 +14,6 @@ var fs = require('fs'),
   path = require('path'),
   config = require('../config');
 
-  console.log(config);
-
 module.exports = function(db) {
   // Initialize express app
   var app = express();

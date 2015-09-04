@@ -20,7 +20,7 @@ var local = {}
 try {
   local = require('./env/' + process.env.NODE_ENV);
 } catch (e) {
-  console.log(chalk.red("IMPORTANT: You have not set up your local configuration in /config/env/local.js"));
+  console.error(chalk.red("IMPORTANT: You have not set up your " + process.env.NODE_ENV + " configuration in /config/env/" + process.env.NODE_ENV + ".js"));
 }
 module.exports = _.extend(
   require('./env/all'),
