@@ -6,7 +6,7 @@ module.exports = {
     description: 'Visualize the room reservations of a Cobot instance',
     keywords: 'cobot, visualization, reservations'
   },
-  port: 80,
+  port: 3000,
   cobot: {
     host: process.env['COBOT_HOST'],
     client_id: process.env['COBOT_CLIENT_ID'],
