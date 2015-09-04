@@ -8,12 +8,17 @@ var _ = require('lodash'),
   chalk = require('chalk');
 
 /**
+ * Initialize environment variable
+ */
+ require('./init')();
+
+/**
  * Load app configurations
  */
 
 var local = {}
 try {
-  local = require('./env/local');
+  local = require('./env/' + process.env.NODE_ENV);
 } catch (e) {
   console.log(chalk.red("IMPORTANT: You have not set up your local configuration in /config/env/local.js"));
 }
