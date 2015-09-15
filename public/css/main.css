@@ -99,6 +99,8 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-align: center;
+  border-left: 1px solid white;
+  margin-left: -1px;
 }
 
 .reservation-label {
