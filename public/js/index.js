@@ -57,7 +57,6 @@ $(function() {
       .attr("class", "time-label");
 
     // Set the height of the reservations
-    console.log($(window).height());
     $("#reservations").height($(window).height() - 170 - 60); // 170 is header height, 60 is footer padding
 
     // Render the rooms.
