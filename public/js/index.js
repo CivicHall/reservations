@@ -16,7 +16,7 @@ $(function() {
 
     // Set up the reservation list
     var start = 28800 ; // 8:00 AM
-    var end = 68400; // 7:00 PM
+    var end = 72000; // 7:00 PM
 
     // Convert start / end times to seconds in the day
     reservations = reservations.map(function(r) {
@@ -35,7 +35,7 @@ $(function() {
 
     // Generate the x axis
     var hours = [];
-    for(var x = start; x <= end; x += 3600) {
+    for(var x = start; x < end; x += 3600) {
       var hour = (Math.floor(x/3600) - 1) % 12 + 1;
       var minute = (x % 3600);
       hours.push(hour + ":" + ((minute < 10)?"0":"") + minute);
@@ -49,16 +49,19 @@ $(function() {
       .attr("class", function(d, i) {
         return "time " + ((i%2 == 0)?"even": "odd") + ((i == hours.length - 1)?" last":"");
       })
-      .style("width", (100 / hours.length) + "%")
+      .style("width", (99 / hours.length) + "%")
       .append("div")
       .text(function(d) {
         return d;
       })
       .attr("class", "time-label");
 
+    // Set the height of the reservations
+    console.log($(window).height());
+    $("#reservations").height($(window).height() - 170 - 60); // 170 is header height, 60 is footer padding
 
     // Render the rooms.
-    var timeline = d3.select("#timeline");
+    var timeline = d3.select("#reservations");
 
     // Create one row per entry
     var rows = timeline.selectAll("div")
@@ -66,10 +69,13 @@ $(function() {
       .enter()
       .append("div")
       .attr("class","row")
+      .style("height", (100/resources.length)  + "%")
 
     // Add the label
     rows.append("div")
-      .attr("class", "label")
+      .attr("class", "resource")
+      .append("div")
+      .attr("class", "resource-label")
       .text(function(d) {
         return d.name;
       })
@@ -78,7 +84,7 @@ $(function() {
     rows.each(function(resource) {
       var row = d3.select(this);
       var filtered = reservations.filter(function(d) {
-        return d.resource.id == resource.id;
+        return d.resource.id == resource.id && d.from < (end - 60 * 60);
       });
       row.append("div")
         .attr("class","timeline")
@@ -87,14 +93,16 @@ $(function() {
         .enter()
         .append("div")
         .attr("class","reservation")
-        .text(function(d) {
-          return d.title;
-        })
         .style("width", function(d) {
-          return (xscale(d.to) - xscale(d.from)) + "%";
+          return (xscale(Math.min(d.to, end - 60 * 60)) - xscale(d.from)) + "%";
         })
         .style("left", function(d) {
           return (xscale(d.from)) + "%";
+        })
+        .append("div")
+        .attr("class","reservation-label")
+        .text(function(d) {
+          return d.title;
         });
     })
   }
