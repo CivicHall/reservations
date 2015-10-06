@@ -28,10 +28,14 @@ body {
   height: 100%;
   top: 0px;
   overflow: visible;
-  border-left: dashed 1px #666;
+  border-left: dashed 1px #fff;
+  padding-left: -1px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 .time.even {
-  background: #f7f7f7;
+  background: #f5f5f5;
 }
 .time.odd {
   background: #FFFFFF;
@@ -63,6 +67,7 @@ body {
   width: 100%;
   clear: both;
   position: relative;
+  border-bottom: 1px dotted #666;
 }
 
 .resource {
@@ -110,5 +115,6 @@ body {
   left: 0px;
   right: 0px;
   margin: auto;
-  height: 24px;
+  height: 16px;
+  font-size: 12px;
 }

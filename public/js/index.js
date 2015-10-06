@@ -16,7 +16,7 @@ $(function() {
 
     // Set up the reservation list
     var start = 28800 ; // 8:00 AM
-    var end = 72000; // 7:00 PM
+    var end = 82800; // 7:00 PM
 
     // Convert start / end times to seconds in the day
     reservations = reservations.map(function(r) {
@@ -49,7 +49,7 @@ $(function() {
       .attr("class", function(d, i) {
         return "time " + ((i%2 == 0)?"even": "odd") + ((i == hours.length - 1)?" last":"");
       })
-      .style("width", (99 / hours.length) + "%")
+      .style("width", (100 / hours.length) + "%")
       .append("div")
       .text(function(d) {
         return d;
@@ -85,6 +85,10 @@ $(function() {
       var filtered = reservations.filter(function(d) {
         return d.resource.id == resource.id && d.from < (end - 60 * 60);
       });
+      filtered.sort(function(a,b) {
+        return a.from - b.from;
+      })
+
       row.append("div")
         .attr("class","timeline")
         .selectAll("div")
@@ -101,7 +105,9 @@ $(function() {
         .append("div")
         .attr("class","reservation-label")
         .text(function(d) {
-          return d.title;
+          if(d.membership && d.title) return d.membership.name + ": " + d.title;
+          else if(d.membership) return d.membership.name;
+          else return d.title
         });
     })
   }

@@ -55,8 +55,8 @@ exports.getReservations = function(req, res) {
   authenticate(function(token) {
     var start = new Date();
     var end = new Date();
-    start.setHours(0,0,0,0);
-    end.setHours(23,59,59,999);
+    start.setUTCHours(0,0,0,0);
+    end.setUTCHours(23,59,59,999);
 
     var parameters = querystring.stringify({
       from: start.toUTCString(),
