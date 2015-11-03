@@ -94,27 +94,28 @@ body {
   position: relative;
 }
 .reservation {
-  display: block;
   position: absolute;
-  top:20%;
-  height: 60%;
-  background: #78A7BF;
+  top:10%;
+  height: 80%;
+  background: #4F6E7E;
   color: #FFF;
   font-family: brandon-grotesque-n5, brandon-grotesque, Calibri, Candara, 'Segoe UI', sans-serif;
-  white-space: nowrap;
   overflow: hidden;
   text-align: center;
   border-left: 1px solid white;
   margin-left: -1px;
 }
 
+.cell-bubble {
+  display: table; 
+  height: 100%;
+  width: 100%;
+}
+
 .reservation-label {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  height: 16px;
-  font-size: 12px;
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center;
+  font-size: 14px;
+  padding: 0px 5px;
 }

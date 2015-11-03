@@ -103,6 +103,8 @@ $(function() {
           return (xscale(d.from)) + "%";
         })
         .append("div")
+        .attr("class", "cell-bubble")
+        .append("div")
         .attr("class","reservation-label")
         .text(function(d) {
           if(d.membership && d.title) return d.membership.name + ": " + d.title;
@@ -112,16 +114,22 @@ $(function() {
     })
   }
 
+  // Refresh reservations
+  function refreshReservations() {
+    $.ajax('/reservations', {
+      method: 'GET',
+      dataType: 'json'
+    })
+    .done(function(data) {
+      reservations = data;
+      renderGraph();
+    })
+  }
 
-  $.ajax('/reservations', {
-    method: 'GET',
-    dataType: 'json'
-  })
-  .done(function(data) {
-    reservations = data;
-    renderGraph();
-  })
+  refreshReservations();
+  setInterval(refreshReservations,30000);
 
+  // Load the resources
   $.ajax('/resources', {
     method: 'GET',
     dataType: 'json'
