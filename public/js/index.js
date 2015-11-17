@@ -16,7 +16,7 @@ $(function() {
 
     // Set up the reservation list
     var start = 28800 ; // 8:00 AM
-    var end = 82800; // 7:00 PM
+    var end = 68400; // 7:00 PM
 
     // Convert start / end times to seconds in the day
     reservations = reservations.map(function(r) {
