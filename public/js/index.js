@@ -109,7 +109,7 @@ $(function() {
         .text(function(d) {
           if(d.membership && d.title) return d.membership.name;
           else if(d.membership) return d.membership.name;
-          else return "";
+          else return "Civic Hall";
         });
     })
   }
