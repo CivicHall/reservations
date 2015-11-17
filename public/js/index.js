@@ -107,9 +107,9 @@ $(function() {
         .append("div")
         .attr("class","reservation-label")
         .text(function(d) {
-          if(d.membership && d.title) return d.membership.name + ": " + d.title;
+          if(d.membership && d.title) return d.membership.name;
           else if(d.membership) return d.membership.name;
-          else return d.title
+          else return "";
         });
     })
   }
